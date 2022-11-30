@@ -16,6 +16,7 @@
 		9ECD616729379FAD000264EF /* TodoMoviesDesafioMobile2YouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD616629379FAD000264EF /* TodoMoviesDesafioMobile2YouTests.swift */; };
 		9ECD617129379FAD000264EF /* TodoMoviesDesafioMobile2YouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD617029379FAD000264EF /* TodoMoviesDesafioMobile2YouUITests.swift */; };
 		9ECD617329379FAD000264EF /* TodoMoviesDesafioMobile2YouUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD617229379FAD000264EF /* TodoMoviesDesafioMobile2YouUITestsLaunchTests.swift */; };
+		9ECD61842937BE14000264EF /* ServiceTMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD61832937BE14000264EF /* ServiceTMDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9ECD616C29379FAD000264EF /* TodoMoviesDesafioMobile2YouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMoviesDesafioMobile2YouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ECD617029379FAD000264EF /* TodoMoviesDesafioMobile2YouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesDesafioMobile2YouUITests.swift; sourceTree = "<group>"; };
 		9ECD617229379FAD000264EF /* TodoMoviesDesafioMobile2YouUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesDesafioMobile2YouUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9ECD61832937BE14000264EF /* ServiceTMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTMDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +101,11 @@
 		9ECD614B29379FA9000264EF /* TodoMoviesDesafioMobile2You */ = {
 			isa = PBXGroup;
 			children = (
-				9ECD614C29379FA9000264EF /* AppDelegate.swift */,
-				9ECD614E29379FA9000264EF /* SceneDelegate.swift */,
-				9ECD615029379FA9000264EF /* ViewController.swift */,
-				9ECD615829379FAC000264EF /* Assets.xcassets */,
-				9ECD615A29379FAC000264EF /* LaunchScreen.storyboard */,
+				9ECD617F2937B8C4000264EF /* Delegate */,
 				9ECD615D29379FAC000264EF /* Info.plist */,
-				9ECD615529379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld */,
+				9ECD61822937B990000264EF /* Views */,
+				9ECD61802937B927000264EF /* Resources */,
+				9ECD61812937B96E000264EF /* Data */,
 			);
 			path = TodoMoviesDesafioMobile2You;
 			sourceTree = "<group>";
@@ -125,6 +125,41 @@
 				9ECD617229379FAD000264EF /* TodoMoviesDesafioMobile2YouUITestsLaunchTests.swift */,
 			);
 			path = TodoMoviesDesafioMobile2YouUITests;
+			sourceTree = "<group>";
+		};
+		9ECD617F2937B8C4000264EF /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				9ECD614C29379FA9000264EF /* AppDelegate.swift */,
+				9ECD614E29379FA9000264EF /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		9ECD61802937B927000264EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9ECD615829379FAC000264EF /* Assets.xcassets */,
+				9ECD615A29379FAC000264EF /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9ECD61812937B96E000264EF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9ECD615529379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld */,
+				9ECD61832937BE14000264EF /* ServiceTMDB.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9ECD61822937B990000264EF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9ECD615029379FA9000264EF /* ViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ECD615129379FA9000264EF /* ViewController.swift in Sources */,
+				9ECD61842937BE14000264EF /* ServiceTMDB.swift in Sources */,
 				9ECD614D29379FA9000264EF /* AppDelegate.swift in Sources */,
 				9ECD614F29379FA9000264EF /* SceneDelegate.swift in Sources */,
 				9ECD615729379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld in Sources */,
