@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E8B64DA29398E9700E17CD5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9E8B64D929398E9700E17CD5 /* Alamofire */; };
 		9ECD614D29379FA9000264EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD614C29379FA9000264EF /* AppDelegate.swift */; };
 		9ECD614F29379FA9000264EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD614E29379FA9000264EF /* SceneDelegate.swift */; };
 		9ECD615129379FA9000264EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD615029379FA9000264EF /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E8B64DA29398E9700E17CD5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +180,9 @@
 			dependencies = (
 			);
 			name = TodoMoviesDesafioMobile2You;
+			packageProductDependencies = (
+				9E8B64D929398E9700E17CD5 /* Alamofire */,
+			);
 			productName = TodoMoviesDesafioMobile2You;
 			productReference = 9ECD614929379FA9000264EF /* TodoMoviesDesafioMobile2You.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +255,9 @@
 				Base,
 			);
 			mainGroup = 9ECD614029379FA9000264EF;
+			packageReferences = (
+				9E8B64D829398E9700E17CD5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 9ECD614A29379FA9000264EF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -628,6 +636,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E8B64D829398E9700E17CD5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E8B64D929398E9700E17CD5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E8B64D829398E9700E17CD5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9ECD615529379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld */ = {
