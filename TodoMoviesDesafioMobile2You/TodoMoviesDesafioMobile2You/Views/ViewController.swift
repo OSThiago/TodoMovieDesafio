@@ -12,9 +12,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .red
+        view.backgroundColor = .green
+        Task {
+            do {
+                let movieDetails = (try await ServiceTMDB.shared.getMovieDetails(id: 724495))
+                print(movieDetails)
+            }
+        }
     }
-
-
 }
 
