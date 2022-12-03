@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E8B64DA29398E9700E17CD5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9E8B64D929398E9700E17CD5 /* Alamofire */; };
+		9E8B64DD293A600600E17CD5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E8B64DC293A600600E17CD5 /* SnapKit */; };
+		9E8B64E0293A62DF00E17CD5 /* MovieDetailsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B64DF293A62DF00E17CD5 /* MovieDetailsVIew.swift */; };
+		9E8B64E3293AAF9600E17CD5 /* MovieDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B64E2293AAF9600E17CD5 /* MovieDetailsModel.swift */; };
+		9E8B64E5293AB0EA00E17CD5 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B64E4293AB0EA00E17CD5 /* APIError.swift */; };
+		9E8B64E7293AB14900E17CD5 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B64E6293AB14900E17CD5 /* MovieDetailsViewModel.swift */; };
+		9E8B64EA293AB52700E17CD5 /* ViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B64E9293AB52700E17CD5 /* ViewSetup.swift */; };
 		9ECD614D29379FA9000264EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD614C29379FA9000264EF /* AppDelegate.swift */; };
 		9ECD614F29379FA9000264EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD614E29379FA9000264EF /* SceneDelegate.swift */; };
-		9ECD615129379FA9000264EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD615029379FA9000264EF /* ViewController.swift */; };
+		9ECD615129379FA9000264EF /* MovieDetaislViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD615029379FA9000264EF /* MovieDetaislViewController.swift */; };
 		9ECD615729379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD615529379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld */; };
 		9ECD615929379FAC000264EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD615829379FAC000264EF /* Assets.xcassets */; };
 		9ECD615C29379FAC000264EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ECD615A29379FAC000264EF /* LaunchScreen.storyboard */; };
@@ -37,10 +44,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E8B64DF293A62DF00E17CD5 /* MovieDetailsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVIew.swift; sourceTree = "<group>"; };
+		9E8B64E2293AAF9600E17CD5 /* MovieDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsModel.swift; sourceTree = "<group>"; };
+		9E8B64E4293AB0EA00E17CD5 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		9E8B64E6293AB14900E17CD5 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		9E8B64E9293AB52700E17CD5 /* ViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSetup.swift; sourceTree = "<group>"; };
 		9ECD614929379FA9000264EF /* TodoMoviesDesafioMobile2You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMoviesDesafioMobile2You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ECD614C29379FA9000264EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ECD614E29379FA9000264EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9ECD615029379FA9000264EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9ECD615029379FA9000264EF /* MovieDetaislViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetaislViewController.swift; sourceTree = "<group>"; };
 		9ECD615629379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoMoviesDesafioMobile2You.xcdatamodel; sourceTree = "<group>"; };
 		9ECD615829379FAC000264EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ECD615B29379FAC000264EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E8B64DA29398E9700E17CD5 /* Alamofire in Frameworks */,
+				9E8B64DD293A600600E17CD5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E8B64DE293A621600E17CD5 /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				9ECD615029379FA9000264EF /* MovieDetaislViewController.swift */,
+				9E8B64DF293A62DF00E17CD5 /* MovieDetailsVIew.swift */,
+				9E8B64E6293AB14900E17CD5 /* MovieDetailsViewModel.swift */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		9E8B64E1293AAB7F00E17CD5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E8B64E2293AAF9600E17CD5 /* MovieDetailsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9E8B64E8293AB50B00E17CD5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9E8B64E9293AB52700E17CD5 /* ViewSetup.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		9ECD614029379FA9000264EF = {
 			isa = PBXGroup;
 			children = (
@@ -101,11 +141,13 @@
 		9ECD614B29379FA9000264EF /* TodoMoviesDesafioMobile2You */ = {
 			isa = PBXGroup;
 			children = (
+				9E8B64E8293AB50B00E17CD5 /* Protocols */,
+				9E8B64E1293AAB7F00E17CD5 /* Models */,
 				9ECD617F2937B8C4000264EF /* Delegate */,
-				9ECD615D29379FAC000264EF /* Info.plist */,
 				9ECD61822937B990000264EF /* Views */,
 				9ECD61802937B927000264EF /* Resources */,
 				9ECD61812937B96E000264EF /* Data */,
+				9ECD615D29379FAC000264EF /* Info.plist */,
 			);
 			path = TodoMoviesDesafioMobile2You;
 			sourceTree = "<group>";
@@ -150,6 +192,7 @@
 			children = (
 				9ECD615529379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld */,
 				9ECD61832937BE14000264EF /* ServiceTMDB.swift */,
+				9E8B64E4293AB0EA00E17CD5 /* APIError.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -157,7 +200,7 @@
 		9ECD61822937B990000264EF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9ECD615029379FA9000264EF /* ViewController.swift */,
+				9E8B64DE293A621600E17CD5 /* MovieDetails */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +221,10 @@
 			dependencies = (
 			);
 			name = TodoMoviesDesafioMobile2You;
+			packageProductDependencies = (
+				9E8B64D929398E9700E17CD5 /* Alamofire */,
+				9E8B64DC293A600600E17CD5 /* SnapKit */,
+			);
 			productName = TodoMoviesDesafioMobile2You;
 			productReference = 9ECD614929379FA9000264EF /* TodoMoviesDesafioMobile2You.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +297,10 @@
 				Base,
 			);
 			mainGroup = 9ECD614029379FA9000264EF;
+			packageReferences = (
+				9E8B64D829398E9700E17CD5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9E8B64DB293A600600E17CD5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 9ECD614A29379FA9000264EF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -292,11 +343,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ECD615129379FA9000264EF /* ViewController.swift in Sources */,
+				9E8B64E0293A62DF00E17CD5 /* MovieDetailsVIew.swift in Sources */,
+				9ECD615129379FA9000264EF /* MovieDetaislViewController.swift in Sources */,
+				9E8B64E3293AAF9600E17CD5 /* MovieDetailsModel.swift in Sources */,
 				9ECD61842937BE14000264EF /* ServiceTMDB.swift in Sources */,
 				9ECD614D29379FA9000264EF /* AppDelegate.swift in Sources */,
+				9E8B64E5293AB0EA00E17CD5 /* APIError.swift in Sources */,
+				9E8B64EA293AB52700E17CD5 /* ViewSetup.swift in Sources */,
 				9ECD614F29379FA9000264EF /* SceneDelegate.swift in Sources */,
 				9ECD615729379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld in Sources */,
+				9E8B64E7293AB14900E17CD5 /* MovieDetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +684,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E8B64D829398E9700E17CD5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		9E8B64DB293A600600E17CD5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E8B64D929398E9700E17CD5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E8B64D829398E9700E17CD5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		9E8B64DC293A600600E17CD5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E8B64DB293A600600E17CD5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9ECD615529379FA9000264EF /* TodoMoviesDesafioMobile2You.xcdatamodeld */ = {
