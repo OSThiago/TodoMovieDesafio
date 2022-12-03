@@ -101,7 +101,7 @@ extension MovieDetailsView: ViewSetup {
         let components = [movieImage, movieTitle, likes, popularity]
         
         for component in components {
-            addSubview(componet)
+            addSubview(component)
         }
     }
     
