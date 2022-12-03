@@ -10,6 +10,9 @@ import SnapKit
 
 class MovieDetailsView: UIView {
     
+    // TODO: - Criar uma arquivo para guardar todos os tamanhos
+    private let screen = UIScreen.main.bounds
+    
     // MARK: - COMPONENTS
     lazy var movieTitle: UILabel = makeTitle(titleText: "Movie Title")
     
@@ -110,7 +113,7 @@ extension MovieDetailsView: ViewSetup {
         // IMAGE
         movieImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(400)
+            make.height.equalTo(screen.height * 0.45)
         }
         
         // TITLE
