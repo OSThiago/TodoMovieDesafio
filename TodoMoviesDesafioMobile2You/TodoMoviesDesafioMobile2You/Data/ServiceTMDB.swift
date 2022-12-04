@@ -12,7 +12,9 @@ class ServiceTMDB {
     
     static let shared = ServiceTMDB()
     
-    private let baseURL = "https://api.themoviedb.org/3/movie/"
+    let baseURL = "https://api.themoviedb.org/3/movie/"
+    
+    let baseImage = "https://image.tmdb.org/t/p/w500/"
     
     // Minha chave de acesso para fazer as requests na API
     private let key = "5b65b89c8ead4ee6c270cf07f8e0e6d9"

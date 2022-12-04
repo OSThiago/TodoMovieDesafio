@@ -30,9 +30,10 @@ class MovieDetaislViewController: UIViewController {
     }
     
     func setupTableView() {
-        movieDetailsView.similarMoviesTableView.delegate = self
-        movieDetailsView.similarMoviesTableView.dataSource = self
-        movieDetailsView.similarMoviesTableView.rowHeight = UIScreen.main.bounds.height * 0.09
+        movieDetailsView.tableView.delegate = self
+        movieDetailsView.tableView.dataSource = self
+        // make table view ignore safe area
+        movieDetailsView.tableView.contentInsetAdjustmentBehavior = .never
     }
 }
 
@@ -40,8 +41,8 @@ class MovieDetaislViewController: UIViewController {
 extension MovieDetaislViewController: MovieDetaisDelegate {
     func movieDetailsFeteched() {
         DispatchQueue.main.async {
-            self.movieDetailsView.setupWith(movieDetails: self.viewModel.movieDetailsModel)
-            self.movieDetailsView.similarMoviesTableView.reloadData()
+            //self.movieDetailsView.setupWith(movieDetails: self.viewModel.movieDetailsModel)
+            self.movieDetailsView.tableView.reloadData()
         }
     }
 }
@@ -52,21 +53,49 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
     // DATASOURCER
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - PEGAR A QUANTIDADE VINDA DA API E RETORNAR
-        return 10
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: - PEGAR DADOS DA API E ADIIONAR NA CELULAR
-        
-        // Create cell
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SimilarMovieTableViewCell.identifier, for: indexPath) as? SimilarMovieTableViewCell else {
-            return UITableViewCell()
+        // MOVIE DETAILS CELL
+        if indexPath.row == 0 {
+            if let movieCell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsCell.identifier, for: indexPath) as? MovieDetailsCell {
+                
+                // movieCell.setupWith(movieDetails: MovieDetailsModel.mock)
+                movieCell.setupWith(movieDetails: self.viewModel.movieDetailsModel)
+                
+                // DISABLE USER INTERACTION
+                movieCell.isUserInteractionEnabled = false
+                
+                return movieCell
+            }
         }
         
-        // TODO: - TROCAR PARA OS DADOS VINDO DA API
-        cell.setupWith(similarMovie: SimilarMovieModel.JusticeLeague)
+        // SIMILAR MOVIE
+        if indexPath.row > 0 {
+            if let similarMovieCell = tableView.dequeueReusableCell(withIdentifier: SimilarMovieTableViewCell.identifier, for: indexPath) as? SimilarMovieTableViewCell {
+                
+                // mock
+                similarMovieCell.setupWith(similarMovie: SimilarMovieModel.Watchmen)
+                
+                return similarMovieCell
+            }
+        }
         
+        let cell = UITableViewCell()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // MOVIE DETAILS CELL
+        if indexPath.row == 0 {
+            return UIScreen.main.bounds.height * 0.58
+        }
+        
+        
+        // SIMILAR MOVIES
+        return UIScreen.main.bounds.height * 0.13
     }
     
     // DELEGATE
