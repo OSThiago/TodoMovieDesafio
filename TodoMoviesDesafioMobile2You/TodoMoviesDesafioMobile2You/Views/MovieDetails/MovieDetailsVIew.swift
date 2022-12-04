@@ -14,6 +14,12 @@ class MovieDetailsView: UIView {
     private let screen = UIScreen.main.bounds
     
     // MARK: - COMPONENTS
+    lazy var scrollView = makeScrollView()
+    
+    lazy var mainStackView: UIStackView = makeMainStackView()
+    
+    lazy var titleStackView: UIStackView = makeTitleStack()
+    
     lazy var movieTitle: UILabel = makeTitle(titleText: "Movie Title")
     
     lazy var likes: UILabel = makeVoteCount(voteCountValue: 0)
@@ -22,7 +28,7 @@ class MovieDetailsView: UIView {
     
     lazy var movieImage: UIImageView = makeMovieImage()
     
-    var gradientLayer = CAGradientLayer()
+    lazy var similarMoviesTableView: UITableView = makeSimilarMoviersTableView()
     
     // MARK: - INIT
     init() {
@@ -46,6 +52,40 @@ class MovieDetailsView: UIView {
     }
     
     // MARK: - MAKE COMPONENTS
+    
+    // SCROLLVIEW
+    func makeScrollView() -> UIScrollView {
+        let scrollView = UIScrollView()
+        return scrollView
+    }
+    
+    // Main stack
+    func makeMainStackView() -> UIStackView {
+        let stackView = UIStackView()
+        
+        // Set StackView diraction
+        stackView.axis = .vertical
+        // Set spacing
+        stackView.spacing = 10
+        // Set Alignment
+        stackView.alignment = .leading
+        
+        return stackView
+    }
+    
+    func makeTitleStack() -> UIStackView {
+        let stack = UIStackView()
+        
+        // SET STACK DIRACTION
+        stack.axis = .horizontal
+        
+        // TODO: - Trocar a forma de preenchimento
+        // SET ALIGNMENT
+        stack.alignment = .fill
+        
+        return stack
+    }
+    
     // TITLE
     func makeTitle(titleText: String) -> UILabel {
         let title = UILabel()
@@ -89,50 +129,102 @@ class MovieDetailsView: UIView {
                 ctx.cgContext.setFillColor(gray: 1, alpha: 0.5)
                 ctx.cgContext.fill(rect)
             }
+
         // Set placeholder
         image.image = img
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         return image
     }
+    
+    // SIMILAR MOVIES TABLE VIEW
+    func makeSimilarMoviersTableView() -> UITableView {
+        let tableView = UITableView()
+        tableView.register(SimilarMovieTableViewCell.self, forCellReuseIdentifier: SimilarMovieTableViewCell.identifier)
+        tableView.separatorStyle = .singleLine
+        return tableView
+    }
 }
 
 // MARK: - VIEWSETUP
 extension MovieDetailsView: ViewSetup {
     func addViews() {
+        // BASE
+        addSubview(scrollView)
         
-        let components = [movieImage, movieTitle, likes, popularity]
+        scrollView.addSubview(mainStackView)
         
-        for component in components {
-            addSubview(component)
+        // MAIN STACKVIEW
+        [movieImage, titleStackView].forEach { view in
+            mainStackView.addArrangedSubview(view)
         }
+        
+//        mainStackView.addArrangedSubview(titleStackView)
+        
+        // TITLE STACKVIEW
+        
+        [movieTitle].forEach { components in
+            titleStackView.addArrangedSubview(components)
+        }
+        
+//        titleStackView.addArrangedSubview(movieTitle)
+        //mainStackView.addArrangedSubview(movieTitle)
+        
+//        mainStackView.addArrangedSubview(movieImage)
+//        mainStackView.addArrangedSubview(popularity)
+//        mainStackView.addArrangedSubview(likes)
+        //scrollView.addSubview(similarMoviesTableView)
     }
     
     func setupConstraints() {
+        
+        // SCROLLVIEW
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        // MAIN STACK VIEW
+        mainStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        // TITLE STACK VIEW
+        titleStackView.snp.makeConstraints { make in
+            make.top.equalTo(movieImage.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(10)
+        }
         
         // IMAGE
         movieImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(screen.height * 0.45)
+            make.width.equalTo(screen.width)
         }
         
         // TITLE
         movieTitle.snp.makeConstraints { make in
             make.top.equalTo(movieImage.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview()
         }
+
+//        // LIKES
+//        likes.snp.makeConstraints { make in
+//            make.leading.equalToSuperview().offset(10)
+//            make.top.equalTo(movieTitle.snp.bottom).offset(30)
+//        }
+//
+//        // POPULARITY
+//        popularity.snp.makeConstraints { make in
+//            make.leading.equalTo(likes.snp.trailing).offset(10)
+//            make.top.equalTo(movieTitle.snp.bottom).offset(30)
+//        }
         
-        // LIKES
-        likes.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.top.equalTo(movieTitle.snp.bottom).offset(30)
-        }
-        
-        // POPULARITY
-        popularity.snp.makeConstraints { make in
-            make.leading.equalTo(likes.snp.trailing).offset(20)
-            make.top.equalTo(movieTitle.snp.bottom).offset(30)
-        }
+        // Similar movies tableview
+//        similarMoviesTableView.snp.makeConstraints { make in
+//            make.top.equalTo(popularity.snp.bottom).offset(10)
+//            make.bottom.equalToSuperview()
+//            make.horizontalEdges.equalToSuperview().inset(10)
+//        }
     }
     
     func otherConfigurations() {
