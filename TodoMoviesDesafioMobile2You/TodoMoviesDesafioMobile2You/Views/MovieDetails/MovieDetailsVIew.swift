@@ -13,13 +13,17 @@ class MovieDetailsView: UIView {
     // TODO: - Criar uma arquivo para guardar todos os tamanhos
     private let screen = UIScreen.main.bounds
     
-    // MARK: - COMPONENTS
+    // MARK: - BASE LAYOUT
     lazy var scrollView = makeScrollView()
     
+    // STACKS
     lazy var mainStackView: UIStackView = makeMainStackView()
     
     lazy var titleStackView: UIStackView = makeTitleStack()
     
+    lazy var subInformationStackView: UIStackView = makeSubInformationsStack()
+    
+    // MARK: - COMPONENTS
     lazy var movieTitle: UILabel = makeTitle(titleText: "Movie Title")
     
     lazy var likes: UILabel = makeVoteCount(voteCountValue: 0)
@@ -59,7 +63,7 @@ class MovieDetailsView: UIView {
         return scrollView
     }
     
-    // Main stack
+    // MAIN STACK
     func makeMainStackView() -> UIStackView {
         let stackView = UIStackView()
         
@@ -73,16 +77,27 @@ class MovieDetailsView: UIView {
         return stackView
     }
     
+    // TITLE STACK
     func makeTitleStack() -> UIStackView {
         let stack = UIStackView()
-        
         // SET STACK DIRACTION
         stack.axis = .horizontal
-        
         // TODO: - Trocar a forma de preenchimento
         // SET ALIGNMENT
         stack.alignment = .fill
         
+        return stack
+    }
+    
+    // SUBTINFORMATIONS STACK
+    func makeSubInformationsStack() -> UIStackView {
+        let stack = UIStackView()
+        // SET DIRACTION
+        stack.axis = .horizontal
+        // SET SPACING
+        stack.spacing = 10
+        // SET ALIGNMENT
+        stack.alignment = .leading
         return stack
     }
     
@@ -151,20 +166,21 @@ extension MovieDetailsView: ViewSetup {
     func addViews() {
         // BASE
         addSubview(scrollView)
-        
         scrollView.addSubview(mainStackView)
         
         // MAIN STACKVIEW
-        [movieImage, titleStackView].forEach { view in
+        [movieImage, titleStackView, subInformationStackView].forEach { view in
             mainStackView.addArrangedSubview(view)
         }
         
-//        mainStackView.addArrangedSubview(titleStackView)
-        
         // TITLE STACKVIEW
-        
         [movieTitle].forEach { components in
             titleStackView.addArrangedSubview(components)
+        }
+        
+        // SUNBINFORMATIONS STACKVIEW
+        [likes,popularity].forEach { components in
+            subInformationStackView.addArrangedSubview(components)
         }
         
 //        titleStackView.addArrangedSubview(movieTitle)
@@ -194,6 +210,12 @@ extension MovieDetailsView: ViewSetup {
             make.leading.trailing.equalToSuperview().inset(10)
         }
         
+        // SUBIFNORMATION STACK VIEW
+        subInformationStackView.snp.makeConstraints { make in
+            make.top.equalTo(titleStackView.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(10)
+        }
+        
         // IMAGE
         movieImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
@@ -209,14 +231,14 @@ extension MovieDetailsView: ViewSetup {
 
 //        // LIKES
 //        likes.snp.makeConstraints { make in
-//            make.leading.equalToSuperview().offset(10)
-//            make.top.equalTo(movieTitle.snp.bottom).offset(30)
+//            make.leading.equalToSuperview()
+//            make.top.equalToSuperview()
 //        }
 //
 //        // POPULARITY
 //        popularity.snp.makeConstraints { make in
-//            make.leading.equalTo(likes.snp.trailing).offset(10)
-//            make.top.equalTo(movieTitle.snp.bottom).offset(30)
+//            make.leading.equalToSuperview()
+//            make.top.equalToSuperview()
 //        }
         
         // Similar movies tableview
