@@ -10,6 +10,7 @@ import Foundation
 enum APIError: LocalizedError {
     // Movies
     case moviesDetailsError
+    case similarMoviesError
 }
 
 extension APIError {
@@ -17,6 +18,8 @@ extension APIError {
         switch self {
         case .moviesDetailsError:
             return "Error on fetch movie details"
+        case .similarMoviesError:
+            return "Error on fetch similar Movies"
         }
     }
 }

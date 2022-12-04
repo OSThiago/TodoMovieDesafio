@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct SimilarMovieModel {
+struct SimilarMoviesBaseModel: Decodable {
+    var page: Int
+    var results: [SimilarMovieModel]
+}
+
+struct SimilarMovieModel: Decodable {
     var id: Int
     var title: String
     var release_date: String

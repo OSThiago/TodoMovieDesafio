@@ -78,9 +78,6 @@ extension MovieDetailsView: ViewSetup {
     }
 }
 
-// link to get a image
-// https://image.tmdb.org/t/p/w500/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg
-
 extension UIImageView {
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in

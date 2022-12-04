@@ -74,7 +74,7 @@ class SimilarMovieTableViewCell: UITableViewCell {
         
         // Config Images
         image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
+        //image.clipsToBounds = true
         return image
     }
     
@@ -117,24 +117,26 @@ extension SimilarMovieTableViewCell: ViewSetup {
     func setupConstraints() {
         // Image
         image.snp.makeConstraints { make in
-            make.size.width.equalTo(50)
-            //make.size.height.equalTo(120)
-            make.leading.equalToSuperview()
-            make.verticalEdges.equalToSuperview().inset(5)
+            make.width.equalTo(50)
+            
+            make.leading.equalToSuperview().offset(20)
+            make.top.bottom.equalToSuperview().inset(5)
         }
         
         // title
         title.snp.makeConstraints { make in
             make.leading.equalTo(image.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(-10)
             make.top.equalToSuperview().offset(20)
         }
-        
+
         // release date
         releaseDate.snp.makeConstraints { make in
             make.leading.equalTo(image.snp.trailing).offset(10)
+            //make.leading.equalToSuperview()
             make.top.equalTo(title.snp.bottom).offset(5)
         }
-        
+
         // genres
         genres.snp.makeConstraints { make in
             make.leading.equalTo(releaseDate.snp.trailing).offset(10)
@@ -143,6 +145,7 @@ extension SimilarMovieTableViewCell: ViewSetup {
     }
     
     func otherConfigurations() {
-        
+        title.adjustsFontSizeToFitWidth = true
+        title.minimumScaleFactor = 0.8
     }
 }

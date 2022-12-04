@@ -53,7 +53,10 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
     // DATASOURCER
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - PEGAR A QUANTIDADE VINDA DA API E RETORNAR
-        return 3
+        
+        let similarMoviesCount = viewModel.similarMoviesModel.count
+        
+        return similarMoviesCount + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,7 +79,9 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
             if let similarMovieCell = tableView.dequeueReusableCell(withIdentifier: SimilarMovieTableViewCell.identifier, for: indexPath) as? SimilarMovieTableViewCell {
                 
                 // mock
-                similarMovieCell.setupWith(similarMovie: SimilarMovieModel.Watchmen)
+                //similarMovieCell.setupWith(similarMovie: SimilarMovieModel.Watchmen)
+                
+                similarMovieCell.setupWith(similarMovie: self.viewModel.similarMoviesModel[indexPath.row - 1])
                 
                 return similarMovieCell
             }
@@ -95,7 +100,8 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
         
         
         // SIMILAR MOVIES
-        return UIScreen.main.bounds.height * 0.13
+        //return UIScreen.main.bounds.height * 0.13
+        return 100
     }
     
     // DELEGATE

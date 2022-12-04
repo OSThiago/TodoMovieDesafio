@@ -41,4 +41,23 @@ class ServiceTMDB {
                 }
         })
     }
+    
+    func getSimilarMovies(id: Int) async throws -> SimilarMoviesBaseModel {
+        
+        let url = "\(baseURL)\(id)/similar?api_key=\(key)&page=1"
+        
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<SimilarMoviesBaseModel, Error>) in
+            
+            AF.request(url, method: .get)
+                .responseDecodable(of: SimilarMoviesBaseModel.self) { response in
+                    switch response.result {
+                    case .success(let similarMoviesBaseModel):
+                        continuation.resume(returning: similarMoviesBaseModel)
+                    case .failure(_):
+                        continuation.resume(throwing: APIError.similarMoviesError)
+                    }
+                }
+            
+        })
+    }
 }
