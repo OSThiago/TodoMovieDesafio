@@ -103,6 +103,8 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
                 
                 similarMovieCell.setupWith(similarMovie: self.viewModel.similarMoviesModel[indexPath.row - 1])
                 
+                similarMovieCell.genreList = viewModel.genresModel
+                
                 return similarMovieCell
             }
         }
