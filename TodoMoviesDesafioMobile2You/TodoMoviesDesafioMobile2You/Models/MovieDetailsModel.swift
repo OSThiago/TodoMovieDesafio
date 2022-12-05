@@ -12,7 +12,6 @@ struct MovieDetailsModel: Decodable {
     var title: String?
     var vote_count: Int?
     var popularity: Double?
-//    var backdrop_path: String?
     var poster_path: String?
 }
 
@@ -23,7 +22,6 @@ extension MovieDetailsModel {
         title: "Black Adam",
         vote_count: 2267,
         popularity: 10405.742,
-//        backdrop_path: <#T##String?#>,
         poster_path: "/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg"
     )
 }

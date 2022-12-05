@@ -11,6 +11,7 @@ enum APIError: LocalizedError {
     // Movies
     case moviesDetailsError
     case similarMoviesError
+    case genresError
 }
 
 extension APIError {
@@ -20,6 +21,8 @@ extension APIError {
             return "Error on fetch movie details"
         case .similarMoviesError:
             return "Error on fetch similar Movies"
+        case .genresError:
+            return "Error on fetch genres list"
         }
     }
 }

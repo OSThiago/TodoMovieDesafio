@@ -27,6 +27,7 @@ class MovieDetaislViewController: UIViewController {
     func setup() {
         // Faz request do filme
         viewModel.fetchMovieDetail(movieID: 436270)
+        viewModel.fetchGenres()
     }
     
     func setupTableView() {
@@ -39,7 +40,19 @@ class MovieDetaislViewController: UIViewController {
 
 // MARK: - DELEGATES
 extension MovieDetaislViewController: MovieDetaisDelegate {
-    func movieDetailsFeteched() {
+    func similarMoviesFetched() {
+        DispatchQueue.main.async {
+            self.movieDetailsView.tableView.reloadData()
+        }
+    }
+    
+    func genresFetched() {
+        DispatchQueue.main.async {
+            self.movieDetailsView.tableView.reloadData()
+        }
+    }
+    
+    func movieDetailsFetched() {
         DispatchQueue.main.async {
             //self.movieDetailsView.setupWith(movieDetails: self.viewModel.movieDetailsModel)
             self.movieDetailsView.tableView.reloadData()
@@ -89,6 +102,8 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
                 //similarMovieCell.setupWith(similarMovie: SimilarMovieModel.Watchmen)
                 
                 similarMovieCell.setupWith(similarMovie: self.viewModel.similarMoviesModel[indexPath.row - 1])
+                
+                similarMovieCell.genreList = viewModel.genresModel
                 
                 return similarMovieCell
             }

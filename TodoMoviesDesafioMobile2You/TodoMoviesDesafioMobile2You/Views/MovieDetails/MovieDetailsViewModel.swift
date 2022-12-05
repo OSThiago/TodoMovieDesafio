@@ -8,7 +8,9 @@
 import Foundation
 
 protocol MovieDetaisDelegate: AnyObject {
-    func movieDetailsFeteched()
+    func movieDetailsFetched()
+    func similarMoviesFetched()
+    func genresFetched()
 }
 
 class MovieDetailsViewModel {
@@ -18,6 +20,8 @@ class MovieDetailsViewModel {
     var movieDetailsModel = MovieDetailsModel()
     
     var similarMoviesModel = [SimilarMovieModel]()
+    
+    var genresModel = [GenreModel]()
     
     init(delegate: MovieDetaisDelegate) {
         self.delegate = delegate
@@ -29,7 +33,7 @@ class MovieDetailsViewModel {
                 let movieDetails = (try await ServiceTMDB.shared.getMovieDetails(id: movieID))
                 self.movieDetailsModel = movieDetails
                 //print(movieDetails)
-                delegate?.movieDetailsFeteched()
+                delegate?.movieDetailsFetched()
             }
         }
         Task {
@@ -37,7 +41,19 @@ class MovieDetailsViewModel {
                 let similarMovies = (try await ServiceTMDB.shared.getSimilarMovies(id: movieID))
                 self.similarMoviesModel.append(contentsOf: similarMovies.results)
                 //print(self.similarMoviesModel)
-                delegate?.movieDetailsFeteched()
+                //delegate?.movieDetailsFetched()
+                delegate?.similarMoviesFetched()
+            }
+        }
+    }
+    
+    func fetchGenres() {
+        Task {
+            do {
+                let genresModel = (try await ServiceTMDB.shared.getGenresList())
+                self.genresModel.append(contentsOf: genresModel.genres)
+                print(self.genresModel)
+                delegate?.genresFetched()
             }
         }
     }

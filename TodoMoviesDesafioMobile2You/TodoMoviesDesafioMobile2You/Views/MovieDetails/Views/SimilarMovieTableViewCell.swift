@@ -13,6 +13,9 @@ class SimilarMovieTableViewCell: UITableViewCell {
     
     static let identifier = "SimilarMovieTableViewCell"
     
+    // TODO: - TROCAR PARA DADOS VINDO DA API
+    var genreList: [GenreModel] = GenresModel.AllGenres.genres
+    
     // MARK: - COMPONENTS
     // IMAGE
     lazy var image = makeImage()
@@ -37,17 +40,27 @@ class SimilarMovieTableViewCell: UITableViewCell {
     }
     
     func setupWith(similarMovie: SimilarMovieModel) {
+        // TITLE
         self.title.text = similarMovie.title
-        self.releaseDate.text = similarMovie.release_date
         
-        // genres
+        // RELEASE DATE
+        var dateFiltered = similarMovie.release_date.prefix(4)
+        self.releaseDate.text = "\(dateFiltered)"
+        
+        // GENRES
         // TODO: - Criar uma lista de generos padrão para receber o id do genero
         self.genres.text?.removeAll()
-        for genre in similarMovie.genre_ids {
-            self.genres.text?.append("\(genre), ")
+        
+        let genresName = getGenreNames(genresID: similarMovie.genre_ids)
+        
+        for genreName in genresName {
+            self.genres.text?.append("\(genreName), ")
         }
+        
         // Remove last "," and " "
-        self.genres.text?.removeLast(2)
+        if self.genres.text!.count > 2 {
+            self.genres.text?.removeLast(2)
+        }
         
         // image
         if let url = URL(string: "\(ServiceTMDB.shared.baseImage)\(similarMovie.poster_path)") {
@@ -99,6 +112,20 @@ class SimilarMovieTableViewCell: UITableViewCell {
         let genres = UILabel()
         genres.text = ""
         genres.font = UIFont.systemFont(ofSize: 8)
+        return genres
+    }
+    
+    func getGenreNames(genresID: [Int]) -> [String] {
+        
+        var genres = [String]()
+        
+        for genreId in genresID {
+            
+            if let genre = self.genreList.first(where: { $0.id == genreId }) {
+                genres.append("\(genre.name)")
+            }
+        }
+        
         return genres
     }
 }

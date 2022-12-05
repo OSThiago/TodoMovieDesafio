@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E2662FF293E24A8008C8EC2 /* GenresModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2662FE293E24A8008C8EC2 /* GenresModel.swift */; };
 		9E8B64DA29398E9700E17CD5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9E8B64D929398E9700E17CD5 /* Alamofire */; };
 		9E8B64DD293A600600E17CD5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E8B64DC293A600600E17CD5 /* SnapKit */; };
 		9E8B64E0293A62DF00E17CD5 /* MovieDetailsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B64DF293A62DF00E17CD5 /* MovieDetailsVIew.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E2662FE293E24A8008C8EC2 /* GenresModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresModel.swift; sourceTree = "<group>"; };
 		9E8B64DF293A62DF00E17CD5 /* MovieDetailsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVIew.swift; sourceTree = "<group>"; };
 		9E8B64E2293AAF9600E17CD5 /* MovieDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsModel.swift; sourceTree = "<group>"; };
 		9E8B64E4293AB0EA00E17CD5 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				9E8B64E2293AAF9600E17CD5 /* MovieDetailsModel.swift */,
 				9E8B64EB293BD19200E17CD5 /* SimilarMovieModel.swift */,
+				9E2662FE293E24A8008C8EC2 /* GenresModel.swift */,
 				9E8B64ED293BD4D400E17CD5 /* MockSimilarMovies.swift */,
 			);
 			path = Models;
@@ -367,6 +370,7 @@
 				9E8B64E0293A62DF00E17CD5 /* MovieDetailsVIew.swift in Sources */,
 				9E8B64EC293BD19200E17CD5 /* SimilarMovieModel.swift in Sources */,
 				9ECD615129379FA9000264EF /* MovieDetaislViewController.swift in Sources */,
+				9E2662FF293E24A8008C8EC2 /* GenresModel.swift in Sources */,
 				9E8B64E3293AAF9600E17CD5 /* MovieDetailsModel.swift in Sources */,
 				9ECD61842937BE14000264EF /* ServiceTMDB.swift in Sources */,
 				9ECD614D29379FA9000264EF /* AppDelegate.swift in Sources */,
