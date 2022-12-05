@@ -39,11 +39,11 @@ class MovieDetailsCell: UITableViewCell {
         title.text = movieDetails.title
         
         // LIKES
-        var likesTextFormated = "\(movieDetails.vote_count?.roundedWithAbbreviations ?? 0.roundedWithAbbreviations)"
+        let likesTextFormated = "\(movieDetails.vote_count?.roundedWithAbbreviations ?? 0.roundedWithAbbreviations)"
         likes.text = "\(likesTextFormated) Likes"
         
         // POPULARITY
-        var popularityTextFormated = "\(movieDetails.popularity?.roundedWithAbbreviations ?? 0.roundedWithAbbreviations)"
+        let popularityTextFormated = "\(movieDetails.popularity?.roundedWithAbbreviations ?? 0.roundedWithAbbreviations)"
         popularity.text = "\(popularityTextFormated) Watched"
 
         if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(movieDetails.poster_path ?? "")") {
@@ -186,39 +186,6 @@ extension MovieDetailsCell: ViewSetup {
     
     func otherConfigurations() {
         
-    }
-}
-
-extension Int {
-    var roundedWithAbbreviations: String {
-        let number = Double(self)
-        let thousand = number / 1000
-        let million = number / 1000000
-        if million >= 1.0 {
-            return "\(round(million*10)/10)M"
-        }
-        else if thousand >= 1.0 {
-            return "\(round(thousand*10)/10)K"
-        }
-        else {
-            return "\(self)"
-        }
-    }
-}
-
-
-extension Double {
-    var roundedWithAbbreviations: String {
-
-        if self >= 10000, self <= 999999 {
-            return String(format: "%.1fK", locale: Locale.current,self/1000).replacingOccurrences(of: ".0", with: "")
-        }
-
-        if self > 999999 {
-            return String(format: "%.1fM", locale: Locale.current,self/1000000).replacingOccurrences(of: ".0", with: "")
-        }
-
-        return String(format: "%.0f", locale: Locale.current,self)
     }
 }
 

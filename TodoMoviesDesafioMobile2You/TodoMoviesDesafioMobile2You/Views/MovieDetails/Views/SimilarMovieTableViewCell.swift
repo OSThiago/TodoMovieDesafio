@@ -44,7 +44,7 @@ class SimilarMovieTableViewCell: UITableViewCell {
         self.title.text = similarMovie.title
         
         // RELEASE DATE
-        var dateFiltered = similarMovie.release_date.prefix(4)
+        let dateFiltered = similarMovie.release_date.prefix(4)
         self.releaseDate.text = "\(dateFiltered)"
         
         // GENRES

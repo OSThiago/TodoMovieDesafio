@@ -16,15 +16,14 @@ class ServiceTMDB {
     
     let baseImage = "https://image.tmdb.org/t/p/w500/"
     
-    // Minha chave de acesso para fazer as requests na API
+    // MY KEY to fech in API
     private let key = "5b65b89c8ead4ee6c270cf07f8e0e6d9"
     
-    /// Usado para fazer request de um filme especifíco
-    /// - Parameter id: Valor `Int` que representa o ID do filme
+    ///  Use to request single movie by id
+    /// - Parameter id:`Int` value represents movie id
     /// - Returns:
     func getMovieDetails(id: Int) async throws -> MovieDetailsModel {
         
-        // Combinação da url base com id do filme e chave de acesso
         let url = "\(baseURL)\(id)?api_key=\(key)"
         
         return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<MovieDetailsModel, Error>) in
@@ -42,6 +41,9 @@ class ServiceTMDB {
         })
     }
     
+    /// Use to request a list of similar movies
+    /// - Parameter id: `Int` value represents movie id
+    /// - Returns: list of similar movies
     func getSimilarMovies(id: Int) async throws -> SimilarMoviesBaseModel {
         
         let url = "\(baseURL)\(id)/similar?api_key=\(key)&page=1"
@@ -60,6 +62,8 @@ class ServiceTMDB {
         })
     }
     
+    /// Use to request all genres
+    /// - Returns: genre list with id and name
     func getGenresList() async throws -> GenresModel {
         
         let url = "https://api.themoviedb.org/3/genre/movie/list?api_key=5b65b89c8ead4ee6c270cf07f8e0e6d9&language=en-US"

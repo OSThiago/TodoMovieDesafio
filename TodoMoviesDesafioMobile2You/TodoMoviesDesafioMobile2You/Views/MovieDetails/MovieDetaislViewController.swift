@@ -25,11 +25,12 @@ class MovieDetaislViewController: UIViewController {
     }
     
     func setup() {
-        // Faz request do filme
+        // MAKE API REQUEST
         viewModel.fetchMovieDetail(movieID: 436270)
         viewModel.fetchGenres()
     }
     
+    /// Add tableview delegate and datasource
     func setupTableView() {
         movieDetailsView.tableView.delegate = self
         movieDetailsView.tableView.dataSource = self
@@ -40,18 +41,21 @@ class MovieDetaislViewController: UIViewController {
 
 // MARK: - DELEGATES
 extension MovieDetaislViewController: MovieDetaisDelegate {
+    /// Reload table view  after fetch similar movies list
     func similarMoviesFetched() {
         DispatchQueue.main.async {
             self.movieDetailsView.tableView.reloadData()
         }
     }
     
+    /// Reload table view after fetch genres list
     func genresFetched() {
         DispatchQueue.main.async {
             self.movieDetailsView.tableView.reloadData()
         }
     }
     
+    /// Reload table view after fetch single movie details
     func movieDetailsFetched() {
         DispatchQueue.main.async {
             //self.movieDetailsView.setupWith(movieDetails: self.viewModel.movieDetailsModel)
