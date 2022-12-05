@@ -12,11 +12,11 @@ class MovieDetailsCell: UITableViewCell {
     static let identifier = "MovieDetailsCell"
     
     // MARK: - COMPONENTS
-    lazy var titleStack = makeTitleStack()
     lazy var subInformationStack = makeSubInformationsStack()
     
     lazy var movieImage = makeMovieImage()
     lazy var title = makeTitle()
+    lazy var buttonLike = makeLikeButton()
     lazy var likes = makeVoteCount()
     lazy var popularity = makePopularity()
     
@@ -24,6 +24,7 @@ class MovieDetailsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -42,17 +43,6 @@ class MovieDetailsCell: UITableViewCell {
     }
     
     // MARK: - MAKE COMPONENTS
-    // TITLE STACK
-    func makeTitleStack() -> UIStackView {
-        let stack = UIStackView()
-        // SET STACK DIRACTION
-        stack.axis = .horizontal
-        // TODO: - Trocar a forma de preenchimento
-        // SET ALIGNMENT
-        stack.alignment = .fill
-        
-        return stack
-    }
     
     // SUBTINFORMATIONS STACK
     func makeSubInformationsStack() -> UIStackView {
@@ -116,18 +106,38 @@ class MovieDetailsCell: UITableViewCell {
         image.clipsToBounds = true
         return image
     }
+    
+    func makeLikeButton() -> UIButton {
+        let button = UIButton()
+        
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        
+        button.tintColor = .black
+        
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        button.backgroundColor = .gray
+        
+        return button
+    }
+    
+    @objc func buttonTapped() {
+        print("clicou no botão")
+        
+//        buttonLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//        buttonLike.setTitleColor(.red, for: .normal)
+        
+    }
 }
 
 extension MovieDetailsCell: ViewSetup {
     func addViews() {
         addSubview(movieImage)
-        addSubview(titleStack)
+        addSubview(title)
         addSubview(subInformationStack)
-
-        [title].forEach { components in
-            titleStack.addArrangedSubview(components)
-        }
-
+        //addSubview(buttonLike)
+        contentView.addSubview(buttonLike)
+        
         [likes, popularity].forEach { components in
             subInformationStack.addArrangedSubview(components)
         }
@@ -141,15 +151,22 @@ extension MovieDetailsCell: ViewSetup {
             make.height.equalTo(UIScreen.main.bounds.height * 0.45)
         }
         
-        // TITLE STACK
-        titleStack.snp.makeConstraints { make in
-            make.top.equalTo(movieImage.snp.bottom)
-            make.horizontalEdges.equalToSuperview().inset(10)
+        // TITLE
+        title.snp.makeConstraints { make in
+            make.top.equalTo(movieImage.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(10)
         }
-
+        
+        // BUTTON LIKE
+        buttonLike.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-10)
+            make.top.equalTo(movieImage.snp.bottom).offset(10)
+            make.size.equalTo(30)
+        }
+        
         // SUBINFORMATINO STACK
         subInformationStack.snp.makeConstraints { make in
-            make.top.equalTo(titleStack.snp.bottom).offset(20)
+            make.top.equalTo(title.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(10)
         }
     }

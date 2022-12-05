@@ -19,6 +19,8 @@ class MovieDetailsViewModel {
     
     var similarMoviesModel = [SimilarMovieModel]()
     
+    var isLikedMovie = false
+    
     init(delegate: MovieDetaisDelegate) {
         self.delegate = delegate
     }
@@ -29,6 +31,7 @@ class MovieDetailsViewModel {
                 let movieDetails = (try await ServiceTMDB.shared.getMovieDetails(id: movieID))
                 self.movieDetailsModel = movieDetails
                 //print(movieDetails)
+                delegate?.movieDetailsFeteched()
             }
         }
         Task {
@@ -39,7 +42,5 @@ class MovieDetailsViewModel {
                 delegate?.movieDetailsFeteched()
             }
         }
-        
-        //delegate?.movieDetailsFeteched()
     }
 }

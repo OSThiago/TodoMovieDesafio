@@ -41,18 +41,16 @@ class SimilarMovieTableViewCell: UITableViewCell {
         self.releaseDate.text = similarMovie.release_date
         
         // genres
-        // Concatena a lista de generos
-        // TODO: - Melhorar a logica e por em uma função
         // TODO: - Criar uma lista de generos padrão para receber o id do genero
         self.genres.text?.removeAll()
         for genre in similarMovie.genre_ids {
             self.genres.text?.append("\(genre), ")
         }
-        // Para remover a virgula e o espaço final
+        // Remove last "," and " "
         self.genres.text?.removeLast(2)
         
         // image
-        if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(similarMovie.poster_path)") {
+        if let url = URL(string: "\(ServiceTMDB.shared.baseImage)\(similarMovie.poster_path)") {
             self.image.load(url: url)
         }
     }

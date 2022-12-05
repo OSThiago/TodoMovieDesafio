@@ -59,6 +59,10 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
         return similarMoviesCount + 1
     }
     
+    @objc func buttonLikeAction() {
+        print("Clicou em like")
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MOVIE DETAILS CELL
         if indexPath.row == 0 {
@@ -67,8 +71,11 @@ extension MovieDetaislViewController: UITableViewDataSource, UITableViewDelegate
                 // movieCell.setupWith(movieDetails: MovieDetailsModel.mock)
                 movieCell.setupWith(movieDetails: self.viewModel.movieDetailsModel)
                 
-                // DISABLE USER INTERACTION
-                movieCell.isUserInteractionEnabled = false
+                movieCell.selectionStyle = .none
+                
+                movieCell.isUserInteractionEnabled = true
+                
+                //movieCell.buttonLike.addTarget(self, action: #selector(buttonLikeAction), for: .touchUpInside)
                 
                 return movieCell
             }
