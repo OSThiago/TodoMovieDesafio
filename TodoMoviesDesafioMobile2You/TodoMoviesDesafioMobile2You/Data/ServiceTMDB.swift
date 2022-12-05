@@ -57,9 +57,24 @@ class ServiceTMDB {
                         continuation.resume(throwing: APIError.similarMoviesError)
                     }
                 }
-            
         })
     }
     
-    
+    func getGenresList() async throws -> GenresModel {
+        
+        let url = "https://api.themoviedb.org/3/genre/movie/list?api_key=5b65b89c8ead4ee6c270cf07f8e0e6d9&language=en-US"
+        
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<GenresModel, Error>) in
+            
+            AF.request(url, method: .get)
+                .responseDecodable(of: GenresModel.self) { response in
+                    switch response.result {
+                    case .success(let genresModel):
+                        continuation.resume(returning: genresModel)
+                    case .failure(_):
+                        continuation.resume(throwing: APIError.genresError)
+                    }
+                }
+        })
+    }
 }
