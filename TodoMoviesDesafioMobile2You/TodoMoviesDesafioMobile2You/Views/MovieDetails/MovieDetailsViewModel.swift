@@ -19,8 +19,6 @@ class MovieDetailsViewModel {
     
     var similarMoviesModel = [SimilarMovieModel]()
     
-    var isLikedMovie = false
-    
     init(delegate: MovieDetaisDelegate) {
         self.delegate = delegate
     }

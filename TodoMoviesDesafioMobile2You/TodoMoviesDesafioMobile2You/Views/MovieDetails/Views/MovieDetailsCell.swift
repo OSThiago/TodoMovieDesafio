@@ -11,6 +11,8 @@ class MovieDetailsCell: UITableViewCell {
     
     static let identifier = "MovieDetailsCell"
     
+    var isLiked = false
+    
     // MARK: - COMPONENTS
     lazy var subInformationStack = makeSubInformationsStack()
     
@@ -116,17 +118,21 @@ class MovieDetailsCell: UITableViewCell {
         
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
-        button.backgroundColor = .gray
+        //button.backgroundColor = .gray
         
         return button
     }
     
     @objc func buttonTapped() {
-        print("clicou no botão")
+        isLiked.toggle()
         
-//        buttonLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//        buttonLike.setTitleColor(.red, for: .normal)
-        
+        if isLiked {
+            buttonLike.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            buttonLike.tintColor = .red
+        } else {
+            buttonLike.setImage(UIImage(systemName: "heart"), for: .normal)
+            buttonLike.tintColor = .black
+        }
     }
 }
 
