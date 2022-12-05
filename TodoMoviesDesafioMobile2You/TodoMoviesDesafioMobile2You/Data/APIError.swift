@@ -8,7 +8,6 @@
 import Foundation
 
 enum APIError: LocalizedError {
-    // Movies
     case moviesDetailsError
     case similarMoviesError
     case genresError
