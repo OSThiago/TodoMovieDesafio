@@ -17,6 +17,8 @@ class MovieDetailsViewModel {
     
     var movieDetailsModel = MovieDetailsModel()
     
+    var similarMoviesModel = [SimilarMovieModel]()
+    
     init(delegate: MovieDetaisDelegate) {
         self.delegate = delegate
     }
@@ -25,11 +27,16 @@ class MovieDetailsViewModel {
         Task {
             do {
                 let movieDetails = (try await ServiceTMDB.shared.getMovieDetails(id: movieID))
-                print(movieDetails)
-                
                 self.movieDetailsModel = movieDetails
-                
-                // Faz com que a view seja atualizada após terminar de baixar os dados
+                //print(movieDetails)
+                delegate?.movieDetailsFeteched()
+            }
+        }
+        Task {
+            do {
+                let similarMovies = (try await ServiceTMDB.shared.getSimilarMovies(id: movieID))
+                self.similarMoviesModel.append(contentsOf: similarMovies.results)
+                //print(self.similarMoviesModel)
                 delegate?.movieDetailsFeteched()
             }
         }

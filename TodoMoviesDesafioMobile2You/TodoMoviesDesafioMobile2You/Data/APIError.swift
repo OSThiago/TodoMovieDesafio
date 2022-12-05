@@ -8,23 +8,18 @@
 import Foundation
 
 enum APIError: LocalizedError {
-    // Images
-    case imageRequestError
-    case dataConversionToImageError
-    
     // Movies
     case moviesDetailsError
+    case similarMoviesError
 }
 
 extension APIError {
     var errorDescription: String? {
         switch self {
-        case .imageRequestError:
-            return "Error on fetch image"
-        case .dataConversionToImageError:
-            return "Error on convert data for image"
         case .moviesDetailsError:
             return "Error on fetch movie details"
+        case .similarMoviesError:
+            return "Error on fetch similar Movies"
         }
     }
 }

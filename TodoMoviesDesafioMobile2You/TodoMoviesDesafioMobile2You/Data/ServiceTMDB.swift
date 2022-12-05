@@ -12,7 +12,9 @@ class ServiceTMDB {
     
     static let shared = ServiceTMDB()
     
-    private let baseURL = "https://api.themoviedb.org/3/movie/"
+    let baseURL = "https://api.themoviedb.org/3/movie/"
+    
+    let baseImage = "https://image.tmdb.org/t/p/w500/"
     
     // Minha chave de acesso para fazer as requests na API
     private let key = "5b65b89c8ead4ee6c270cf07f8e0e6d9"
@@ -37,6 +39,25 @@ class ServiceTMDB {
                         continuation.resume(throwing: APIError.moviesDetailsError)
                     }
                 }
+        })
+    }
+    
+    func getSimilarMovies(id: Int) async throws -> SimilarMoviesBaseModel {
+        
+        let url = "\(baseURL)\(id)/similar?api_key=\(key)&page=1"
+        
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<SimilarMoviesBaseModel, Error>) in
+            
+            AF.request(url, method: .get)
+                .responseDecodable(of: SimilarMoviesBaseModel.self) { response in
+                    switch response.result {
+                    case .success(let similarMoviesBaseModel):
+                        continuation.resume(returning: similarMoviesBaseModel)
+                    case .failure(_):
+                        continuation.resume(throwing: APIError.similarMoviesError)
+                    }
+                }
+            
         })
     }
 }
